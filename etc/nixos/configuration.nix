@@ -50,7 +50,6 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     discord
-    flashplayer
     firefox
     gstreamer
     gpodder

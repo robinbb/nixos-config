@@ -18,11 +18,6 @@
       fsType = "zfs";
     };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/201A-5A28";
-      fsType = "vfat";
-    };
-
   fileSystems."/home" =
     { device = "zroot/root/home";
       fsType = "zfs";
@@ -31,6 +26,11 @@
   fileSystems."/tmp" =
     { device = "zroot/root/tmp";
       fsType = "zfs";
+    };
+
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/201A-5A28";
+      fsType = "vfat";
     };
 
   swapDevices = [ ];
