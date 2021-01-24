@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./cachix.nix
     ];
 
   # Use the GRUB 2 boot loader.
@@ -51,8 +52,8 @@
   environment.systemPackages = with pkgs; [
     discord
     firefox
-    gstreamer
-    gpodder
+    brave
+    slack
     signal-desktop
     vim
     vlc
@@ -86,10 +87,14 @@
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
+
   hardware.bluetooth.enable = true;
 
-  # Enable the X11 windowing system.
+  # Unnecessary.
+  # hardware.u2f.enable = true;
+
   services.xserver.enable = true;
+  services.xserver.autorun = false;
   # services.xserver.layout = "us";
   # services.xserver.xkbOptions = "eurosign:e";
 
@@ -97,10 +102,9 @@
   # services.xserver.libinput.enable = true;
 
   # services.xserver.displayManager.sddm.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  # services.xserver.desktopManager.plasma5.enable = true;
-  services.xserver.desktopManager.gnome3.enable = true;
-  services.xserver.autorun = false;
+  # services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.plasma5.enable = true;
+  # services.xserver.desktopManager.gnome3.enable = true;
   # services.xserver.videoDrivers = [ "nvidia" ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
