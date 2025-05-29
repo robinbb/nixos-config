@@ -84,8 +84,9 @@
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
     brave
-    vim
     tmux
+    signal-desktop
+    vim
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
