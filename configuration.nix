@@ -38,18 +38,15 @@
     ];
   };
 
-  networking.hostName = "tux1"; # Define your hostname.
-  networking.hostId = "00112233";
+  networking.hostName = "tux1"; # Must match what's in flake.nix
+  networking.hostId = "00112233"; # Required for ZFS
+
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
   # Set your time zone.
   time.timeZone = "America/Vancouver";
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_CA.UTF-8";
@@ -84,15 +81,15 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.anon = {
     isNormalUser = true;
     description = "Anon";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       direnv
-      zoxide
+      signal-desktop
       syncthing
+      zoxide
     ];
   };
 
@@ -103,7 +100,6 @@
   environment.systemPackages = with pkgs; [
     brave
     tmux
-    signal-desktop
     vim
   ];
 
@@ -126,12 +122,6 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
-
-  # Copy the NixOS configuration file and link it from the resulting system
-  # (/run/current-system/configuration.nix). This is useful in case you
-  # accidentally delete configuration.nix.
-  # Not supported with flakes.
-  # system.copySystemConfiguration = true;
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
