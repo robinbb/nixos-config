@@ -10,6 +10,11 @@
       ./hardware-configuration.nix
     ];
 
+  swapDevices =
+    [ { device = "/dev/disk/by-partuuid/6c04262a-f6f3-4b6e-b83d-db414aa26d00"; }
+      { device = "/dev/disk/by-partuuid/f8413d07-bc37-4b96-ba0f-d616dc6a1b1f"; }
+    ];
+
   boot.loader.grub = {
     enable = true;
     zfsSupport = true;
