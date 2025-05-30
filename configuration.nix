@@ -10,6 +10,8 @@
       ./hardware-configuration.nix
     ];
 
+  hardware.enableAllFirmware = true;
+
   swapDevices =
     [ { device = "/dev/disk/by-partuuid/6c04262a-f6f3-4b6e-b83d-db414aa26d00"; }
       { device = "/dev/disk/by-partuuid/f8413d07-bc37-4b96-ba0f-d616dc6a1b1f"; }
@@ -86,6 +88,7 @@
     description = "Anon";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
+      discord
       direnv
       signal-desktop
       syncthing
@@ -93,12 +96,16 @@
     ];
   };
 
-  programs.git.enable = true;
+  programs = {
+    git.enable = true;
+    zsh.enable = true;
+  };
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
     brave
+    ripgrep
     tmux
     vim
   ];
