@@ -15,6 +15,20 @@
       { device = "/dev/disk/by-partuuid/f8413d07-bc37-4b96-ba0f-d616dc6a1b1f"; }
     ];
 
+  fileSystems."/boot0" =
+    { device = "/dev/disk/by-partuuid/25e414d5-0c58-4a94-9a59-1e91f4273369";
+      fsType = "vfat";
+      options = [ "fmask=0022" "dmask=0022" ];
+    };
+
+  fileSystems."/boot1" =
+    { device = "/dev/disk/by-partuuid/a1ac031e-beba-45ae-a4bb-6a03bd29e972";
+      fsType = "vfat";
+      options = [ "fmask=0022" "dmask=0022" ];
+    };
+
+
+
   boot.loader.grub = {
     enable = true;
     zfsSupport = true;
