@@ -107,6 +107,7 @@
     brave
     ripgrep
     tmux
+    usbutils
     vim
   ];
 
