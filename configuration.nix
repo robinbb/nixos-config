@@ -109,10 +109,12 @@
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
     brave
+    lsof
     ripgrep
     tmux
     usbutils
     vim
+    vlc
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -127,6 +129,8 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+
+  services.tailscale.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
