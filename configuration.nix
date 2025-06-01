@@ -90,8 +90,12 @@
     packages = with pkgs; [
       discord
       direnv
+      logseq
+      obsidian
       signal-desktop
       syncthing
+      transmission_4-gtk
+      zoom-us
       zoxide
     ];
   };
@@ -118,6 +122,8 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+
+  services.jellyfin.enable = true;
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
