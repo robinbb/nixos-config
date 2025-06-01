@@ -102,6 +102,7 @@
 
   programs = {
     git.enable = true;
+    mosh.enable = true;
     zsh.enable = true;
   };
 
