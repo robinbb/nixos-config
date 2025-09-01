@@ -83,6 +83,7 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
+  users.defaultUserShell = pkgs.zsh;
   users.users.anon = {
     isNormalUser = true;
     description = "Anon";
