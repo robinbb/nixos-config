@@ -134,6 +134,8 @@
 
   services.tailscale.enable = true;
 
+  services.flatpak.enable = true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
