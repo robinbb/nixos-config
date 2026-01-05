@@ -106,6 +106,7 @@
     mosh.enable = true;
     zsh.enable = true;
   };
+  programs.ssh.enableAskPassword = false;
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
