@@ -87,7 +87,7 @@
   users.users.anon = {
     isNormalUser = true;
     description = "Anon";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
       discord
       direnv
@@ -139,6 +139,8 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  virtualisation.docker.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
