@@ -90,17 +90,19 @@
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
       brave
+      # claude-code
       discord
       direnv
       logseq
       nushell
       obsidian
+      qbittorrent
       signal-desktop
       syncthing
-      transmission_4-gtk
       trayscale
       vlc
       vscode
+      # vscode-extensions.anthropic.claude-code
       zoom-us
     ];
   };
