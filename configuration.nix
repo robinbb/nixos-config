@@ -89,7 +89,6 @@
     description = "Anon";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
-      bat
       brave
       discord
       direnv
@@ -103,7 +102,6 @@
       vlc
       vscode
       zoom-us
-      zoxide
     ];
   };
 
@@ -117,6 +115,7 @@
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
+    bat
     htop
     lsof
     ripgrep
@@ -124,6 +123,7 @@
     tree
     usbutils
     vim
+    zoxide
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
