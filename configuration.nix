@@ -99,7 +99,9 @@
       signal-desktop
       syncthing
       transmission_4-gtk
+      trayscale
       vlc
+      vscode
       zoom-us
       zoxide
     ];
