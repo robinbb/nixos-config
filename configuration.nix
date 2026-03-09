@@ -89,14 +89,17 @@
     description = "Anon";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
+      bat
+      brave
       discord
       direnv
       logseq
+      nushell
       obsidian
-      opam
       signal-desktop
       syncthing
       transmission_4-gtk
+      vlc
       zoom-us
       zoxide
     ];
@@ -112,13 +115,13 @@
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
-    brave
+    htop
     lsof
     ripgrep
     tmux
+    tree
     usbutils
     vim
-    vlc
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
