@@ -112,7 +112,36 @@
     mosh.enable = true;
     zsh.enable = true;
   };
+
   programs.ssh.enableAskPassword = false;
+
+programs.neovim = {
+  enable = true;
+  defaultEditor = true;
+  configure = {
+    customRC = ''
+      set viminfofile=$HOME/.cache/vim/viminfo
+      set mouse=
+      set et
+      set sw=2
+      colorscheme vim
+
+      lua << EOF
+      require("nvim-treesitter.configs").setup({
+        highlight = { enable = true },
+      })
+      EOF
+    '';
+    packages.myPlugins = with pkgs.vimPlugins; {
+      start = [
+        (nvim-treesitter.withPlugins (p: [
+          p.markdown
+          p.markdown_inline
+        ]))
+      ];
+    };
+  };
+};
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
