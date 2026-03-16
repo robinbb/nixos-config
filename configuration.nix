@@ -90,10 +90,11 @@
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
       brave
-      # claude-code
+      claude-code
       discord
       direnv
       logseq
+      markdownlint-cli2
       nushell
       obsidian
       qbittorrent
@@ -102,7 +103,6 @@
       trayscale
       vlc
       vscode
-      # vscode-extensions.anthropic.claude-code
       zoom-us
     ];
   };
@@ -115,33 +115,10 @@
 
   programs.ssh.enableAskPassword = false;
 
-programs.neovim = {
-  enable = true;
-  defaultEditor = true;
-  configure = {
-    customRC = ''
-      set viminfofile=$HOME/.cache/vim/viminfo
-      set mouse=
-      set et
-      set sw=2
-      colorscheme vim
-
-      lua << EOF
-      require("nvim-treesitter.configs").setup({
-        highlight = { enable = true },
-      })
-      EOF
-    '';
-    packages.myPlugins = with pkgs.vimPlugins; {
-      start = [
-        (nvim-treesitter.withPlugins (p: [
-          p.markdown
-          p.markdown_inline
-        ]))
-      ];
-    };
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
   };
-};
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
