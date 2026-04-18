@@ -90,8 +90,10 @@
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
       brave
+      diffstat
       discord
       direnv
+      gh
       logseq
       markdownlint-cli2
       nushell
@@ -103,7 +105,7 @@
       vlc
       vscode
       zoom-us
-    ];
+    ] ++ [ pkgs.unstable.claude-code ] ;
   };
 
   programs = {
