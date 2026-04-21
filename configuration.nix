@@ -90,6 +90,7 @@
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
       brave
+      claude-code
       diffstat
       discord
       direnv
@@ -105,7 +106,7 @@
       vlc
       vscode
       zoom-us
-    ] ++ [ pkgs.unstable.claude-code ] ;
+    ];
   };
 
   programs = {
