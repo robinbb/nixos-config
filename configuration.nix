@@ -29,6 +29,12 @@
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
+  fileSystems."/mnt/sda1" = {
+    device = "/dev/disk/by-uuid/6ee2a668-9af9-40fb-96fd-e94bcd667f1d";
+    fsType = "ext4";
+    options = [ "noatime" "discard" "user" ];
+  };
+
   boot.loader.grub = {
     enable = true;
     zfsSupport = true;
@@ -57,6 +63,8 @@
     # font = "Lat2-Terminus16";
     # useXkbConfig = true; # use xkb.options in tty.
   };
+
+  services.fstrim.enable = true;
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
