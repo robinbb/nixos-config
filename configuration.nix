@@ -46,6 +46,9 @@
     ];
   };
 
+  # Mitigation for "Copy Fail" (CVE-2026-31431).
+  boot.blacklistedKernelModules = [ "algif_aead" ];
+
   networking.hostName = "tux1"; # Must match what's in flake.nix
   networking.hostId = "00112233"; # Required for ZFS
 
