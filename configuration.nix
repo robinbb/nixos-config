@@ -46,8 +46,13 @@
     ];
   };
 
-  # Mitigation for "Copy Fail" (CVE-2026-31431).
-  boot.blacklistedKernelModules = [ "algif_aead" ];
+  # Mitigation for "Copy Fail" (CVE-2026-31431), and more.
+  boot.blacklistedKernelModules = [ "algif_aead" "esp4" "esp6" "rxrpc" ];
+  # algif_aead is frequently built-in (CONFIG_CRYPTO_USER_API_AEAD=y), so
+  # blacklistedKernelModules is unreliable. Kernel cmdline always works.
+  boot.kernelParams = [
+    "initcall_blacklist=algif_aead_init"
+  ];
 
   networking.hostName = "tux1"; # Must match what's in flake.nix
   networking.hostId = "00112233"; # Required for ZFS
@@ -105,18 +110,21 @@
       diffstat
       discord
       direnv
+      jq
       gh
       logseq
       markdownlint-cli2
       nushell
       obsidian
       qbittorrent
+      ruby
       signal-desktop
       syncthing
       trayscale
       vlc
       vscode
-      zoom-us
+      wl-clipboard
+      # zoom-us
     ];
   };
 
