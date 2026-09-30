@@ -37,6 +37,7 @@
 
   boot.loader.grub = {
     enable = true;
+    configurationLimit = 5;  # To conserve disk space.
     zfsSupport = true;
     efiSupport = true;
     efiInstallAsRemovable = true;
@@ -53,6 +54,8 @@
   boot.kernelParams = [
     "initcall_blacklist=algif_aead_init"
   ];
+
+  boot.zfs.forceImportRoot = false;
 
   networking.hostName = "tux1"; # Must match what's in flake.nix
   networking.hostId = "00112233"; # Required for ZFS
@@ -112,7 +115,7 @@
       direnv
       jq
       gh
-      logseq
+      # logseq
       markdownlint-cli2
       nushell
       obsidian
@@ -121,6 +124,7 @@
       signal-desktop
       syncthing
       trayscale
+      unrar
       vlc
       vscode
       wl-clipboard
@@ -181,7 +185,9 @@
   virtualisation.docker.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+
+  # networking.firewall.allowedTCPPorts = [ 8081 ];
+
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
