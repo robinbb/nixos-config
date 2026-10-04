@@ -12,6 +12,22 @@
 
   hardware.enableAllFirmware = true;
 
+  # bluez 5.86 regression: profile-connect order reversed (cdcd845f87ee), so dual-role
+  # A2DP devices (AudioSource + AudioSink, e.g. Bose NC 700) negotiate audio-gateway
+  # and never expose a2dp-sink. Cherry-picks upstream fix slated for 5.87.
+  # Remove once nixpkgs ships bluez >= 5.87 (the build will fail with
+  # "Reversed (or previously applied) patch detected" when that happens).
+  # https://github.com/bluez/bluez/issues/1898
+  hardware.bluetooth.package = pkgs.bluez.overrideAttrs (old: {
+    patches = (old.patches or [ ]) ++ [
+      (pkgs.fetchpatch {
+        name = "bluez-a2dp-connect-source-after-sink.patch";
+        url = "https://github.com/bluez/bluez/commit/066a164a524e4983b850f5659b921cb42f84a0e0.patch";
+        hash = "sha256-I1WoBJZEZJ05hwGuksp52I4FLJ+jbG9t7U2sLTFmU0w=";
+      })
+    ];
+  });
+
   swapDevices =
     [ { device = "/dev/disk/by-partuuid/6c04262a-f6f3-4b6e-b83d-db414aa26d00"; }
       { device = "/dev/disk/by-partuuid/f8413d07-bc37-4b96-ba0f-d616dc6a1b1f"; }
